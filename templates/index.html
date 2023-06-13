@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TA-2022_2023-12</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+  <body>
+    <div class="container home">
+      <div class="title row justify-content-center">
+        <div class="col-2 text-center">
+          <img class="logo-img" src="../static/img/pkh.jpg" alt="PKH" />
+        </div>
+        <div class="col-8 text-center">
+          <h1>
+            Prediksi Kandidat Penerima Bantuan Sosial Program Keluarga Harapan
+            (PKH)
+          </h1>
+        </div>
+        <div class="col-2 text-center">
+          <img class="logo-img" src="../static/img/itdel.png" alt="IT Del" />
+        </div>
+      </div>
+      <div class="box mt-4 mb-4">
+        <form action="/predict" method="POST">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="kepemilikan_rumah"
+                  >Kepemilikan Rumah
+                  <small class="form-text text-muted"
+                    >Status penguasaan bangunan tempat tinggal yang
+                    ditempati</small
+                  ></label
+                >
+                <select
+                  class="form-control"
+                  name="kepemilikan_rumah"
+                  id="kepemilikan_rumah"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="0">Bebas Sewa</option>
+                  <option value="1">Dinas</option>
+                  <option value="2">Kontrak</option>
+                  <option value="3">Lainnya</option>
+                  <option value="4">Milik sendiri</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="kepemilikan_lahan"
+                  >Kepemilikan Lahan
+                  <small class="form-text text-muted"
+                    >Status lahan tempat tinggal yang ditempati</small
+                  ></label
+                >
+                <select
+                  class="form-control"
+                  name="kepemilikan_lahan"
+                  id="kepemilikan_lahan"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="0">Lainnya</option>
+                  <option value="1">Milik orang lain</option>
+                  <option value="2">Milik sendiri</option>
+                  <option value="3">Tanah Negara</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="jenis_dinding">Jenis Dinding Terluas</label>
+                <select
+                  class="form-control"
+                  name="jenis_dinding"
+                  id="jenis_dinding"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="0">Anyaman Bambu</option>
+                  <option value="1">Bambu</option>
+                  <option value="2">Batang Kayu</option>
+                  <option value="3">Kayu</option>
+                  <option value="4">Lainnya</option>
+                  <option value="5">Plesteran</option>
+                  <option value="6">Tembok</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="jenis_atap">Jenis Atap Terluas</label>
+                <select
+                  class="form-control"
+                  name="jenis_atap"
+                  id="jenis_atap"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="0">Asbes</option>
+                  <option value="1">bambu</option>
+                  <option value="2">Beton</option>
+                  <option value="3">Genteng Tanah Liat</option>
+                  <option value="4">Genteng Keramik</option>
+                  <option value="5">Genteng Metal</option>
+                  <option value="6">Jerami</option>
+                  <option value="7">Lainnya</option>
+                  <option value="8">Seng</option>
+                  <option value="9">Sirap</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="fasilitas_buang_air_besar"
+                  >Fasilitas Tempat Buang Air Besar
+                </label>
+                <select
+                  class="form-control"
+                  name="fasilitas_buang_air_besar"
+                  id="fasilitas_buang_air_besar"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="0">Bersama</option>
+                  <option value="1">Sendiri</option>
+                  <option value="2">Tidak Ada</option>
+                  <option value="3">Umum</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_kapal">Ada Kapal</label>
+                <select
+                  class="form-control"
+                  name="ada_kapal"
+                  id="ada_kapal"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_mobil">Ada Mobil</label>
+                <select
+                  class="form-control"
+                  name="ada_mobil"
+                  id="ada_mobil"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_sepeda">Ada Sepeda</label>
+                <select
+                  class="form-control"
+                  name="ada_sepeda"
+                  id="ada_sepeda"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_emas"
+                  >Emas / perhiasan & tabungan (senilai 10 gram emas)
+                </label>
+                <select
+                  class="form-control"
+                  name="ada_emas"
+                  id="ada_emas"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_telepon">Ada Telepon rumah (PSTN)</label>
+                <select
+                  class="form-control"
+                  name="ada_telepon"
+                  id="ada_telepon"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_pemanas">Ada Pemanas AIr (Water Heater)</label>
+                <select
+                  class="form-control"
+                  name="ada_pemanas"
+                  id="ada_pemanas"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_ac">Ada AC ( Air Conditioning )</label>
+
+                <select class="form-control" name="ada_ac" id="ada_ac" required>
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_tabung_gas"
+                  >Ada Tabung Gas 5,5 kg atau Lebih
+                </label>
+                <select
+                  class="form-control"
+                  name="ada_tabung_gas"
+                  id="ada_tabung_gas"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="status_bpjs_mandiri"
+                  >Status BPJS Kesehatan peserta mandiri</label
+                >
+                <select
+                  class="form-control"
+                  name="status_bpjs_mandiri"
+                  id="status_bpjs_mandiri"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="status_asuransi"
+                  >Status Asuransi Kesehatan Lainnya</label
+                >
+                <select
+                  class="form-control"
+                  name="status_asuransi"
+                  id="status_asuransi"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="status_kredit_usaha_rakyat"
+                  >Status Kredit Usaha Rakyat ( KUR )</label
+                >
+                <select
+                  class="form-control"
+                  name="status_kredit_usaha_rakyat"
+                  id="status_kredit_usaha_rakyat"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="status_kis"
+                  >Status Kartu Indonesia Sehat (KIS)/BPJS
+                  Kesehatan/Jamkesmas</label
+                >
+                <select
+                  class="form-control"
+                  name="status_kis"
+                  id="status_kis"
+                  required
+                >
+                  <option value="">--</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-6 mt-3">
+              <button class="submit-btn" type="submit">Lakukan Prediksi</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

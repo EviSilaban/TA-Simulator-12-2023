@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TA-2022_2023-12</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+  <body>
+    <div class="container home">
+      <div class="title row justify-content-center">
+        <div class="col-2 text-center">
+          <img class="logo-img" src="../static/img/pkh.jpg" alt="PKH" />
+        </div>
+        <div class="col-8 text-center">
+          <h1>
+            Prediksi Kandidat Penerima Bantuan Sosial Program Keluarga Harapan
+            (PKH)
+          </h1>
+        </div>
+        <div class="col-2 text-center">
+          <img class="logo-img" src="../static/img/itdel.png" alt="IT Del" />
+        </div>
+      </div>
+
+      <div class="box mt-4 mb-4">
+        <form action="/predict" method="POST">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="kepemilikan_rumah"
+                  >Kepemilikan Rumah
+                  <small class="form-text text-muted"
+                    >Status penguasaan bangunan tempat tinggal yang
+                    ditempati</small
+                  ></label
+                >
+                <input type="text" class="form-control" disabled value= {% if
+                data.kepemilikan_rumah[0] == '4' %} Milik_Sendiri {% endif %} {%
+                if (data.kepemilikan_rumah[0] == '0') %} Bebas_Sewa {% endif%}
+                {% if (data.kepemilikan_rumah[0] == '2') %} Kontrak {% endif %}
+                {% if (data.kepemilikan_rumah[0] == '1') %} Dinas {% endif %} {%
+                if (data.kepemilikan_rumah[0] == '3') %} Lainnya {% endif %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="kepemilikan_lahan"
+                  >Kepemilikan Lahan
+                  <small class="form-text text-muted"
+                    >Status lahan tempat tinggal yang ditempati</small
+                  ></label
+                >
+                <input type="text" class="form-control" disabled value= {% if
+                (data.kepemilikan_lahan[0] == '2') %} Milik_Sendiri {% endif %}
+                {% if (data.kepemilikan_lahan[0] == '1') %} Milik_orang_lain {%
+                endif %} {% if (data.kepemilikan_lahan[0] == '3') %}
+                Tanah_negara {% endif %} {% if (data.kepemilikan_lahan[0] ==
+                '0') %} Lainnya {% endif %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="jenis_dinding">Jenis Dinding Terluas</label>
+                <input type="text" class="form-control" disabled value={% if
+                (data.jenis_dinding[0] == '6') %} Tembok {% endif %} {% if
+                (data.jenis_dinding[0] == '5') %} Plesteran {% endif %} {% if
+                (data.jenis_dinding[0] == '3') %} Kayu {% endif %} {% if
+                (data.jenis_dinding[0] == '0') %} Anyaman_Bambu {% endif %} {%
+                if (data.jenis_dinding[0] == '2') %} Batang_Kayu {% endif %} {%
+                if (data.jenis_dinding[0] == '1') %} Bambu {% endif %} {% if
+                (data.jenis_dinding[0] == '4') %} Lainnya {% endif %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="jenis_atap">Jenis Atap Terluas</label>
+                <input type="text" class="form-control" disabled value={% if
+                (data.jenis_atap[0] == '8') %} Seng {% endif %} {% if
+                (data.jenis_atap[0] == '2') %} Beton {% endif %} {% if
+                (data.jenis_atap[0] == '4') %} Genteng Keramik {% endif %} {% if
+                (data.jenis_atap[0] == '3') %} Genteng Tanah Liat {% endif %} {%
+                if (data.jenis_atap[0] == '5') %} Genteng Metal {% endif %} {%
+                if (data.jenis_atap[0] == '6') %} Jerami {% endif %} {% if
+                (data.jenis_atap[0] == '0') %} Asbes {% endif %} {% if
+                (data.jenis_atap[0] == '9') %} Sirap {% endif %} {% if
+                (data.jenis_atap[0] == '1') %} Bambu {% endif %} {% if
+                (data.jenis_atap[0] == '7') %} Lainnya {% endif %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="fasilitas_buang_air_besar"
+                  >Fasilitas Tempat Buang Air Besar</label
+                >
+                <input type="text" class="form-control" disabled value={% if
+                (data.fasilitas_buang_air_besar[0] == '1') %} Sendiri {% endif
+                %} {% if (data.fasilitas_buang_air_besar[0] == '0') %} Bersama
+                {% endif %} {% if (data.fasilitas_buang_air_besar[0] == '3') %}
+                Umum {% endif %} {% if (data.fasilitas_buang_air_besar[0] ==
+                '2') %} Tidak Ada {% endif %}>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_kapal">Ada Kapal</label>
+                <input type="text" class="form-control" disabled value={% if
+                (data.ada_kapal[0] == '1') %} Ya {% endif %} {% if
+                (data.ada_kapal[0] == '0') %} Tidak {% endif %}>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_mobil">Ada Mobil</label>
+                <input type="text" class="form-control" disabled value={% if
+                (data.ada_mobil[0] == '1') %} Ya {% endif %} {% if
+                (data.ada_mobil[0] == '0') %} Tidak {% endif %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_sepeda">Ada Sepeda</label>
+                <input type="text" class="form-control" disabled value={% if
+                (data.ada_sepeda[0] == '1') %} Ya {% endif %} {% if
+                (data.ada_sepeda[0] == '0') %} Tidak {% endif %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_emas"
+                  >Ada Emas / perhiasan & tabungan (senilai 10 gram emas)</label
+                >
+                <input type="text" class="form-control" disabled value={% if
+                (data.ada_emas[0] == '1') %} Ya {% endif %} {% if
+                (data.ada_emas[0] == '0') %} Tidak {% endif %}>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_telepon">Ada Telepon rumah (PSTN)</label>
+                <input type="text" class="form-control" disabled value={% if
+                (data.ada_telepon[0] == '1') %} Ya {% endif %} {% if
+                (data.ada_telepon[0] == '0') %} Tidak {% endif %}>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_pemanas">Ada Pemanas AIr (Water Heater)</label>
+                <input type="text" class="form-control" disabled value={% if
+                (data.ada_pemanas[0] == '1') %} Ya {% endif %} {% if
+                (data.ada_pemanas[0] == '0') %} Tidak {% endif %}>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_ac">Ada AC ( Air Conditioning )</label>
+                <input type="text" class="form-control" disabled value={% if
+                (data.ada_ac[0] == '1') %} Ya {% endif %} {% if (data.ada_ac[0]
+                == '0') %} Tidak {% endif %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="ada_tabung_gas"
+                  >Ada Tabung Gas 5,5 kg atau Lebih</label
+                >
+                <input type="text" class="form-control" disabled value={% if
+                (data.ada_tabung_gas[0] == '1') %} Ya {% endif %} {% if
+                (data.ada_tabung_gas[0] == '0') %} Tidak {% endif %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="status_bpjs_mandiri"
+                  >Status BPJS Kesehatan peserta mandiri</label
+                >
+                <input type="text" class="form-control" disabled value={% if
+                (data.status_bpjs_mandiri[0] == '1') %} Ya {% endif %} {% if
+                (data.status_bpjs_mandiri[0] == '0') %} Tidak {% endif %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="status_asuransi"
+                  >Status Asuransi Kesehatan Lainnya</label
+                >
+                <input type="text" class="form-control" disabled value={% if
+                (data.status_asuransi[0] == '1') %} Ya {% endif %} {% if
+                (data.status_asuransi[0] == '0') %} Tidak {% endif %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="status_kredit_usaha_rakyat"
+                  >Status Kredit Usaha Rakyat ( KUR )</label
+                >
+                <input type="text" class="form-control" disabled value={% if
+                (data.status_kredit_usaha_rakyat[0] == '1') %} Ya {% endif %} {%
+                if (data.status_kredit_usaha_rakyat[0] == '0') %} Tidak {% endif
+                %} >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="form-group">
+                <label for="status_kis"
+                  >Status Kartu Indonesia Sehat (KIS)/BPJS
+                  Kesehatan/Jamkesmas</label
+                >
+                <input type="text" class="form-control" disabled value={% if
+                (data.status_kis[0] == '1') %} Ya {% endif %} {% if
+                (data.status_kis[0] == '0') %} Tidak {% endif %} >
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <div class="result-box text-center">
+            <h5>Hasil Prediksi</h5>
+            <hr />
+            {% if (result == 0) %}
+            <h1>Tidak Direkomendasikan</h1>
+            {% else %}
+            <h1>Direkomendasikan</h1>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <div class="result-box text-center">
+            <h2>{{ confidence }} %</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <form action="/">
+            <button class="submit-btn2" type="submit">
+              Lakukan Prediksi Lain
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
